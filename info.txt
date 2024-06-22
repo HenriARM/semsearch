@@ -1,0 +1,24 @@
+Methods
+Statistical Learning Methods:
+
+
+TODO: 
+- find correct dataset to test semantic search on
+- read how other people compare this models
+- start writing Introduction
+
+TF-IDF
+Word embeddings
+Sentence embeddings (ton of different chunking ways, shapes etc. what can be written)
+BM25
+Siamese networks
+
+A tentative outline of your report could look like this:
+1. Introduction: Introduce the research questions, why it is interesting and how you are going to answer the research questions.
+2. Data: Briefly explain the data that you have, where they are from and why they are relevant for your problem. If appropriate, describe relevant data properties and general data preparation steps.
+3. Methods: Provide a short description of the methods that you use as well as a motivation for choosing these methods.
+4. Analyses & Results: Describe how you apply the methods and present the results.
+5. Conclusions: Briefly summarize your findings and the corresponding conclusions. Relate the outcomes to the research questions.
+6. References
+
+* For supervised problems, assess if your models have statistically significantly different performance.
