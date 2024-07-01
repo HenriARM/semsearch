@@ -1,5 +1,4 @@
 from sentence_transformers import SentenceTransformer
-import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 class TextSearchSBERT:
@@ -15,15 +14,17 @@ class TextSearchSBERT:
         cos_similarities = cosine_similarity([query_embedding], self.corpus_embeddings)[0]
         return cos_similarities
 
-# Example usage
-corpus = [
-    "the quick brown fox",
-    "jumps over the lazy dog",
-    "and runs away",
-    "the quick brown fox jumps over the lazy dog",
-    "BM25 is a ranking function"
-]
-text_search = TextSearchSBERT(corpus)
-query = "quick fox"
-similarities = text_search.search(query)
-print(similarities)
+
+if __name__ == "__main__":
+    # Example usage
+    corpus = [
+        "the quick brown fox",
+        "jumps over the lazy dog",
+        "and runs away",
+        "the quick brown fox jumps over the lazy dog",
+        "BM25 is a ranking function"
+    ]
+    text_search = TextSearchSBERT(corpus)
+    query = "quick fox"
+    similarities = text_search.search(query)
+    print(similarities)

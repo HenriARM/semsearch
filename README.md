@@ -128,11 +128,52 @@ Unlike TF-IDF and BM25, which rely on term frequency metrics and ignore word ord
 
 ## 4. Analyses & Result
 
-Evaluation Metrics
-Precision, Recall, and F1 Score: These metrics will assess the accuracy and relevancy of the search results provided by each model.
-Mean Reciprocal Rank (MRR): This metric is used for evaluating the order in which the relevant documents are presented by the search algorithms.
+To comprehensively assess the performance of the semantic search models, several metrics are used: Precision, Recall, F1 Score, and Mean Reciprocal Rank (MRR). Each of these metrics helps to provide insights into different aspects of model effectiveness.
 
-TODO: write all formulas
+### Precision
+
+Precision measures the accuracy of the returned results by calculating the proportion of relevant documents retrieved over the total number of documents retrieved.
+
+- **Formula**:
+  
+  \[
+  \text{Precision} = \frac{\text{Number of Relevant Documents Retrieved}}{\text{Total Number of Documents Retrieved}}
+  \]
+
+### Recall
+
+Recall measures the ability of the model to retrieve all relevant documents by calculating the proportion of relevant documents retrieved over the total number of relevant documents available.
+
+- **Formula**:
+  
+  \[
+  \text{Recall} = \frac{\text{Number of Relevant Documents Retrieved}}{\text{Total Number of Relevant Documents}}
+  \]
+
+### F1 Score
+
+The F1 Score is the harmonic mean of Precision and Recall, providing a balance between them. It is particularly useful when the contribution of both precision and recall is equally important.
+
+- **Formula**:
+  
+  \[
+  \text{F1 Score} = 2 \cdot \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+  \]
+
+### Mean Reciprocal Rank (MRR)
+
+Mean Reciprocal Rank is a statistic measure for evaluating any process that produces a list of possible responses to a sample of queries, ordered by probability of correctness. The MRR provides a measure of the effectiveness of a semantic search algorithm, specifically focusing on the rank of the first correct answer found.
+
+- **Formula**:
+  
+  \[
+  \text{MRR} = \frac{1}{Q} \sum_{i=1}^{Q} \frac{1}{\text{rank}_i}
+  \]
+
+where \(Q\) is the number of queries, and \(\text{rank}_i\) is the position of the first relevant document in the list of returned documents for the \(i\)-th query.
+
+These metrics are crucial for understanding both the effectiveness and efficiency of the semantic search models in retrieving relevant information based on user queries.
+
 
 ## 5. Conclusions
 
