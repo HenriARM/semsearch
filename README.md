@@ -2,11 +2,6 @@
 
 ![](./resources/SemanticSearch.png)
 
-  \[
-  \text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
-  \]
-
-TODO: understnad baseline models and write description
 TODO: add other metrics: ndcg, MRR
 TODO: list models in eval and generate comparison table
 TODO: finish 4th paragraph
@@ -16,11 +11,9 @@ TODO: if you divide into passages it is one thing - you should do that for all m
 Methods:
 TF-IDF
 BM25
-Word embeddings
+Word2Vec, GloVe
 Sentence embeddings (SBERT, OpenAI) - params: vector size, distance function, all different ways to split text
 Siamese networks
-
-3. Methods: Provide a short description of the methods that you use as well as a motivation for choosing these methods.
 
 4. Analyses & Results: Describe how you apply the methods and present the results.
 
@@ -124,18 +117,14 @@ BM25 is a ranking function used by search engines to estimate the relevance of d
 
 BM25 is selected for its robustness and has been shown to perform well across a wide range of text retrieval tasks. Its ability to handle various lengths of documents and the frequency of terms makes it a superior method for testing in complex semantic search scenarios.
 
+### SBERT (Sentence-BERT)
 
+Sentence-BERT (SBERT) is a modification of the pre-trained BERT network that uses siamese and triplet network structures to produce embeddings that are specifically tuned for semantic similarity comparison. This model is highly effective for semantic search applications because it generates sentence embeddings that can be directly compared using cosine similarity, making it significantly faster for semantic comparisons than typical BERT models.
 
+The SBERT model utilized in this study is instantiated with the `all-MiniLM-L6-v2` model, a lightweight version of SBERT optimized for greater speed and lower resource consumption while maintaining strong performance.
 
-Advanced Semantic Models
+Unlike TF-IDF and BM25, which rely on term frequency metrics and ignore word order and semantics, SBERT understands the context and meaning behind sentences. This leads to significantly improved performance in matching queries with relevant texts based on semantic content rather than mere keyword overlap.
 
-Word Embeddings (Word2Vec, GloVe)
-Description: These models generate dense vector representations for words based on their contextual similarities. For semantic search, we compute the average of the word vectors in a query or document to create a single vector that represents the textual content.
-Rationale: Word embeddings are chosen for their ability to capture deeper linguistic patterns and word associations, potentially improving the retrieval of semantically relevant documents.
-
-BERT (Bidirectional Encoder Representations from Transformers)
-Description: BERT processes words in relation to all other words in a sentence, unlike traditional models that read the text sequentially. This allows the model to interpret the full context of a word by looking at the words that come before and after it—ideal for understanding the intent behind search queries.
-Rationale: BERT is integrated into the study for its state-of-the-art performance in a variety of NLP tasks, including its application in search scenarios where understanding the context and nuance of language is crucial.
 
 ## 4. Analyses & Result
 
