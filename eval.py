@@ -22,17 +22,15 @@ def compute_metrics(pred, true):
     return precision, recall, f1, rr
 
 
-def evaluate(dataset, model, num_samples=100):
+def evaluate(dataset):
     results = []
-    sum_rr = 0  # Sum of Reciprocal Ranks for MRR calculation
+    sum_rr = 0
 
-    for i in range(num_samples):
+    for i in range(len(dataset)):
         query = dataset["query"][i]
-        # TODO
-        # passages = [p['passage_text'] for p in dataset["passages"][i]]
-        # selected = [p['is_selected'] for p in dataset["passages"][i]]
-        passages = dataset["passages"][i]["passage_text"]
+        passage = dataset["passages"][i]["passage_text"]
         selected = dataset["passages"][i]["is_selected"]
+        model = TFIDF(passage)
         scores = model.search(query)
         predicted_indices = sorted(
             range(len(scores)), key=lambda k: scores[k], reverse=True
@@ -40,7 +38,6 @@ def evaluate(dataset, model, num_samples=100):
         ground_truth_indices = [
             idx for idx, is_sel in enumerate(selected) if is_sel == 1
         ]
-
         precision, recall, f1, rr = compute_metrics(
             predicted_indices[:5], ground_truth_indices
         )
@@ -50,17 +47,14 @@ def evaluate(dataset, model, num_samples=100):
     avg_precision = sum(r[0] for r in results) / len(results)
     avg_recall = sum(r[1] for r in results) / len(results)
     avg_f1 = sum(r[2] for r in results) / len(results)
-    mrr = sum_rr / num_samples
+    mrr = sum_rr / len(dataset)
     return avg_precision, avg_recall, avg_f1, mrr
 
 
-
-corpus = ds["train"][:1000]["passages"][0]["passage_text"]
-# corpus = [p for entry in ds["train"][:100]["passages"] for p in entry["passage_text"]]
+data_len = 100
 # model = TextSearchSBERT(corpus)
 # model = BM25(corpus)
-model = TFIDF(corpus)
-avg_precision, avg_recall, avg_f1, mrr = evaluate(ds["train"][:100], model)
+avg_precision, avg_recall, avg_f1, mrr = evaluate(ds["train"][:data_len])
 print(
     f"Average Precision: {avg_precision}, Average Recall: {avg_recall}, Average F1 Score: {avg_f1}, MRR: {mrr}"
 )
