@@ -1,5 +1,6 @@
 # Semantic search
 
+TODO: add other metrics: ndcg, MRR
 TODO: kNN for fast vector search?
 TODO: if you divide into passages it is one thing - you should do that for all models, otherwise each model will return closest text with different lengths
 
@@ -71,6 +72,8 @@ Rationale: Word embeddings are chosen for their ability to capture deeper lingui
 BERT (Bidirectional Encoder Representations from Transformers)
 Description: BERT processes words in relation to all other words in a sentence, unlike traditional models that read the text sequentially. This allows the model to interpret the full context of a word by looking at the words that come before and after it—ideal for understanding the intent behind search queries.
 Rationale: BERT is integrated into the study for its state-of-the-art performance in a variety of NLP tasks, including its application in search scenarios where understanding the context and nuance of language is crucial.
+
+## 4. 
 
 Evaluation Metrics
 Precision, Recall, and F1 Score: These metrics will assess the accuracy and relevancy of the search results provided by each model.
