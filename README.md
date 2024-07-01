@@ -8,7 +8,7 @@ TF-IDF
 BM25
 Word embeddings
 Sentence embeddings (SBERT, OpenAI) - params: vector size, distance function, all different ways to split text
-
+Siamese networks
 
 1. Introduction: Introduce the research questions, why it is interesting and how you are going to answer the research questions.
 
