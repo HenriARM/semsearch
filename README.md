@@ -223,7 +223,8 @@ In response to our research questions:
 5. "Microsoft MS MARCO: A Human Generated MAchine Reading COmprehension Dataset." [https://microsoft.github.io/msmarco/](https://microsoft.github.io/msmarco/).
 
 ## Code:
-TF-IDF [here](https://github.com/HenriARM/semsearch/blob/main/tfidf.py)
-BM25 [here](https://github.com/HenriARM/semsearch/blob/main/bm25.py)
-SBERT [here](https://github.com/HenriARM/semsearch/blob/main/sbert.py)
-Evaluation [here](https://github.com/HenriARM/semsearch/blob/main/eval.py)
+
+- TF-IDF [here](https://github.com/HenriARM/semsearch/blob/main/tfidf.py)
+- BM25 [here](https://github.com/HenriARM/semsearch/blob/main/bm25.py)
+- SBERT [here](https://github.com/HenriARM/semsearch/blob/main/sbert.py)
+- Evaluation [here](https://github.com/HenriARM/semsearch/blob/main/eval.py)
