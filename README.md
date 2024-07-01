@@ -2,7 +2,6 @@
 
 ![](./resources/SemanticSearch.png)
 
-TODO: understnad baseline models and write description
 TODO: add other metrics: ndcg, MRR
 TODO: list models in eval and generate comparison table
 TODO: finish 4th paragraph
@@ -82,9 +81,46 @@ These steps help in cleaning and standardizing the data, making it more amenable
 ## 3. Methods
 In exploring the efficacy of semantic search, this study employs a range of methods from traditional information retrieval techniques to advanced machine learning models. The selected methods are chosen for their demonstrated ability in handling text data and improving search results through understanding contextual and semantic content.
 
-Traditional Search Model: TF-IDF + Cosine Similarity
-Description: Term Frequency-Inverse Document Frequency (TF-IDF) is a numerical statistic intended to reflect how important a word is to a document in a collection or corpus. It is often used in conjunction with cosine similarity, which measures the cosine of the angle between two vectors. This approach serves as our baseline.
-Rationale: TF-IDF is selected as the baseline for its widespread use and effectiveness in traditional search applications, providing a benchmark for evaluating more advanced semantic models.
+### TF-IDF (Term Frequency-Inverse Document Frequency)
+
+TF-IDF is a statistical measure used to evaluate the importance of a word to a document in a collection or corpus. The importance increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus.
+
+- **Term Frequency (TF)** is calculated as:
+  
+  $
+  \text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
+  $
+
+- **Inverse Document Frequency (IDF)** is calculated as:
+
+  $
+  \text{IDF}(t, D) = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents with term } t}\right)
+  $
+
+- **TF-IDF** is then computed by multiplying these two values:
+
+  $
+  \text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)
+  $
+
+TF-IDF is chosen for its simplicity and effectiveness in identifying relevant terms within a large dataset. It serves as a benchmark for comparing more complex algorithms like BM25.
+
+### BM25 (Okapi BM25)
+
+BM25 is a ranking function used by search engines to estimate the relevance of documents to a given search query, based on the query terms appearing in each document. It is an evolution of the TF-IDF model, incorporating probabilistic understanding of term occurrence, non-binary length normalization, and saturation.
+
+- **BM25 Score** for a document $d$ given a query $q$ is defined as:
+
+  $
+  \text{score}(d, q) = \sum_{t \in q} \text{IDF}(t) \cdot \frac{f(t, d) \cdot (k_1 + 1)}{f(t, d) + k_1 \cdot \left(1 - b + b \cdot \frac{|d|}{\text{avgdl}}\right)}
+  $
+
+  where $ f(t, d) $ is $ t $'s term frequency in the document $d$, $|d|$ is the length of the document, $\text{avgdl} $ is the average document length in the text collection, $k_1$ and $b$ are free parameters, usually chosen as $k_1 = 2.0$ and $b = 0.75$.
+
+BM25 is selected for its robustness and has been shown to perform well across a wide range of text retrieval tasks. Its ability to handle various lengths of documents and the frequency of terms makes it a superior method for testing in complex semantic search scenarios.
+
+
+
 
 Advanced Semantic Models
 
@@ -96,13 +132,15 @@ BERT (Bidirectional Encoder Representations from Transformers)
 Description: BERT processes words in relation to all other words in a sentence, unlike traditional models that read the text sequentially. This allows the model to interpret the full context of a word by looking at the words that come before and after it—ideal for understanding the intent behind search queries.
 Rationale: BERT is integrated into the study for its state-of-the-art performance in a variety of NLP tasks, including its application in search scenarios where understanding the context and nuance of language is crucial.
 
-## 4. 
+## 4. Analyses & Result
 
 Evaluation Metrics
 Precision, Recall, and F1 Score: These metrics will assess the accuracy and relevancy of the search results provided by each model.
 Mean Reciprocal Rank (MRR): This metric is used for evaluating the order in which the relevant documents are presented by the search algorithms.
 
 TODO: write all formulas
+
+## 5. Conclusions
 
 ## 6. References
 https://microsoft.github.io/msmarco/
