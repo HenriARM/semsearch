@@ -1,3 +1,4 @@
+import pandas as pd
 from datasets import load_dataset
 from bm25 import BM25
 from tfidf import TFIDF
@@ -11,26 +12,23 @@ def compute_metrics(pred, true):
     precision = tp / len(pred) if pred else 0
     recall = tp / len(true) if true else 0
     f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) else 0
-
-    # Calculate Reciprocal Rank
     rr = 0.0
     for rank, index in enumerate(pred, start=1):
         if index in true:
             rr = 1.0 / rank
             break
-
     return precision, recall, f1, rr
 
 
-def evaluate(dataset):
+def evaluate(model_class, dataset):
     results = []
     sum_rr = 0
 
     for i in range(len(dataset)):
         query = dataset["query"][i]
-        passage = dataset["passages"][i]["passage_text"]
+        passages = dataset["passages"][i]["passage_text"]
         selected = dataset["passages"][i]["is_selected"]
-        model = TFIDF(passage)
+        model = model_class(passages)
         scores = model.search(query)
         predicted_indices = sorted(
             range(len(scores)), key=lambda k: scores[k], reverse=True
@@ -51,10 +49,25 @@ def evaluate(dataset):
     return avg_precision, avg_recall, avg_f1, mrr
 
 
-data_len = 100
-# model = TextSearchSBERT(corpus)
-# model = BM25(corpus)
-avg_precision, avg_recall, avg_f1, mrr = evaluate(ds["train"][:data_len])
-print(
-    f"Average Precision: {avg_precision}, Average Recall: {avg_recall}, Average F1 Score: {avg_f1}, MRR: {mrr}"
-)
+# model_classes = [TFIDF]
+model_classes = [TFIDF, BM25, TextSearchSBERT]
+results = []
+data_len = 100  # Number of queries to evaluate
+for model_class in model_classes:
+    avg_precision, avg_recall, avg_f1, mrr = evaluate(
+        model_class, ds["train"][:data_len]
+    )
+    results.append(
+        {
+            "Model": model_class.__name__,
+            "Precision": avg_precision,
+            "Recall": avg_recall,
+            "F1 Score": avg_f1,
+            "MRR": mrr,
+        }
+    )
+
+# Convert results to DataFrame and save to CSV
+df_results = pd.DataFrame(results)
+df_results.to_csv("results.csv", index=False)
+print(df_results)
