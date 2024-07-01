@@ -2,23 +2,10 @@
 
 ![](./resources/SemanticSearch.png)
 
-TODO: add other metrics: ndcg, MRR
 TODO: list models in eval and generate comparison table
-TODO: finish 4th paragraph
-TODO: kNN for fast vector search?
-TODO: if you divide into passages it is one thing - you should do that for all models, otherwise each model will return closest text with different lengths
-
-Methods:
-TF-IDF
-BM25
-Word2Vec, GloVe
-Sentence embeddings (SBERT, OpenAI) - params: vector size, distance function, all different ways to split text
-Siamese networks
 
 4. Analyses & Results: Describe how you apply the methods and present the results.
-
 5. Conclusions: Briefly summarize your findings and the corresponding conclusions. Relate the outcomes to the research questions.
-
 * For supervised problems, assess if your models have statistically significantly different performance.
 
 
