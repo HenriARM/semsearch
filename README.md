@@ -2,6 +2,10 @@
 
 ![](./resources/SemanticSearch.png)
 
+  \[
+  \text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
+  \]
+
 TODO: understnad baseline models and write description
 TODO: add other metrics: ndcg, MRR
 TODO: list models in eval and generate comparison table
