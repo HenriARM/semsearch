@@ -221,3 +221,9 @@ In response to our research questions:
 3. Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. [https://arxiv.org/abs/1908.10084](https://arxiv.org/abs/1908.10084).
 4. Robertson, S., & Zaragoza, H. (2009). The Probabilistic Relevance Framework: BM25 and Beyond. *Foundations and Trends® in Information Retrieval*, 3(4), 333-389.
 5. "Microsoft MS MARCO: A Human Generated MAchine Reading COmprehension Dataset." [https://microsoft.github.io/msmarco/](https://microsoft.github.io/msmarco/).
+
+## Code:
+TF-IDF [here](https://github.com/HenriARM/semsearch/blob/main/tfidf.py)
+BM25 [here](https://github.com/HenriARM/semsearch/blob/main/bm25.py)
+SBERT [here](https://github.com/HenriARM/semsearch/blob/main/sbert.py)
+Evaluation [here](https://github.com/HenriARM/semsearch/blob/main/eval.py)
